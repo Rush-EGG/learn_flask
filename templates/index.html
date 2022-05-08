@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>用户列表</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>年龄</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key, value in data_dict.items() %}
+        <tr>
+            <td>{{key}}</td>
+            <td>{{value['name']}}</td>
+<!--            <td>{{value.age}}</td>-->
+<!--            如果没有age属性，那么就赋默认值1999-->
+            <td>{{value.get('age', '1999')}}</td>
+            <td>
+                <a href="/edit?nid={{key}}">编辑</a>
+                <a href="/delete/{{key}}">删除</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
