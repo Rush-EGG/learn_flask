@@ -49,5 +49,13 @@ class SqlHelper(object):
 
         return result
 
+    def __enter__(self):
+        # 只要cursor所以取数组下标为1的，即第二个元素
+        return self.open()[1]
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(exc_type, exc_val, exc_tb)
+        # self.cursor.close()
+
 
 db = SqlHelper()
